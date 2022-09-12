@@ -1,0 +1,5 @@
+/* center the entire website */
+body {
+    margin: auto;
+    max-width: 500px;
+   }
