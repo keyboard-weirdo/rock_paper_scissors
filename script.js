@@ -4,6 +4,9 @@ const resultDisplay = document.getElementById('result')
 //get all the possible choices
 let userChoice
 let result
+let userScore = document.getElementById('you')
+let computerScore = document.getElementById('pc')
+let roundWinner = ''
 const possibleChoices = document.querySelectorAll('button')
 
 possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
@@ -11,7 +14,7 @@ possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click
  userChoiceDisplay.innerHTML = userChoice
  //generate computer choice upon click as well
  generateComputerChoice()
- getResult()
+ getScore()
 }))
 
 function generateComputerChoice() {
@@ -29,17 +32,19 @@ function generateComputerChoice() {
  computerChoiceDisplay.innerHTML = computerChoice
 }
 //display result
-function getResult() {
+function getScore(userChoice, computerChoice) {
  if(userChoice === computerChoice){
  result = "It's a draw!"
 } else if((userChoice === 'Rock' && computerChoice === 'Scissors') ||
           (userChoice === 'Paper' && computerChoice === 'Rock') ||
           (userChoice === 'Scissors' && computerChoice === 'Paper')){
  result = "You win!"
+ userScore++
 } else {
  result = "You lose!"
+ computerScore++
 }
 resultDisplay.innerHTML = result
 }
 
-//make for loop for 5 rounds
+//work on scores, they still don't work
