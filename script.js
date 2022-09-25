@@ -1,12 +1,10 @@
+//grab the elements we need
 const userChoiceDisplay = document.getElementById('userChoice')
 const computerChoiceDisplay = document.getElementById('computerChoice')
 const resultDisplay = document.getElementById('result')
 //get all the possible choices
 let userChoice
 let result
-let userScore = document.getElementById('you')
-let computerScore = document.getElementById('pc')
-let roundWinner = ''
 const possibleChoices = document.querySelectorAll('button')
 
 possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
@@ -18,7 +16,7 @@ possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click
 }))
 
 function generateComputerChoice() {
- const randomNumber = Math.floor(Math.random() * possibleChoices.length )
+ const randomNumber = Math.floor(Math.random() * possibleChoices.length)
  // to make sure it's working: console.log(randomNumber)
  if ( randomNumber === 0 ) {
   computerChoice = 'Rock'
@@ -32,19 +30,17 @@ function generateComputerChoice() {
  computerChoiceDisplay.innerHTML = computerChoice
 }
 //display result
-function getScore(userChoice, computerChoice) {
- if(userChoice === computerChoice){
- result = "It's a draw!"
-} else if((userChoice === 'Rock' && computerChoice === 'Scissors') ||
-          (userChoice === 'Paper' && computerChoice === 'Rock') ||
-          (userChoice === 'Scissors' && computerChoice === 'Paper')){
- result = "You win!"
- userScore++
-} else {
- result = "You lose!"
- computerScore++
-}
-resultDisplay.innerHTML = result
-}
+ function getScore() {
+  if(userChoice === computerChoice){
+  result = "It's a draw!"
+ } else if((userChoice === 'Rock' && computerChoice === 'Scissors') ||
+           (userChoice === 'Paper' && computerChoice === 'Rock') ||
+           (userChoice === 'Scissors' && computerChoice === 'Paper')){
+  result = "You win!"
+ } else {
+  result = "You lose!"
+ }
+ resultDisplay.innerHTML = result
+ }
 
 //work on scores, they still don't work
